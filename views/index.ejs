@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="javascripts/index.js"></script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <table id="elevators"> 
+      <td>Elevator 1</td>
+      <td>Elevator 2</td>
+      <td>Elevator 3</td>
+      <td>Elevator 4</td>
+      <td>Elevator 5</td></table>
+    <p>Welcome to <%= title %></p>
+  </body>
+  <script> 
+  createLevels();
+  const build = document.getElementById("elevators");
+  console.log(build.rows[0].cells.length)
+  moveUp(3, 10);
+  </script>
+</html>
