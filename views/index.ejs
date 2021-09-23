@@ -1,24 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= title %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script type="text/javascript" src="javascripts/index.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <h1><%= title %></h1>
-    <table id="elevators"> 
-      <td>Elevator 1</td>
-      <td>Elevator 2</td>
-      <td>Elevator 3</td>
-      <td>Elevator 4</td>
-      <td>Elevator 5</td></table>
-    <p>Welcome to <%= title %></p>
+    <div class="container">
+      <div class="header"><h1><%= title %></h1></div>
+      <div class="content-large">
+        <table id="elevators" border-spacing="2"> 
+          <td>Elevator 1</td>
+          <td>Elevator 2</td>
+          <td>Elevator 3</td>
+          <td>Elevator 4</td>
+          <td>Elevator 5</td></table>
+      </div>
+      <div class="content-small" id="div-small">
+      </div>
+    </div>
+    
   </body>
-  <script> 
-  createLevels();
+  <script>
+  if(start_state) {
+    createLevels();
+    addButtons();
+  } 
   const build = document.getElementById("elevators");
-  console.log(build.rows[0].cells.length)
+  console.log(build.rows[0].cells.length);
   moveUp(3, 10);
+  moveDown(3, 5);
   </script>
 </html>
