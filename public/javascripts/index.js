@@ -22,6 +22,7 @@ async function createLevels() {
   }
 
   async function moveUp(elevator, floor) {
+      hashmap.set(elevator, floor);
       console.log("moving to floor: " + floor.toString());
       floor = 21 - floor;
       building = document.getElementById("elevators");
@@ -41,10 +42,12 @@ async function createLevels() {
   }
 
   async function moveDown(elevator, floor) {
+    hashmap.set(elevator, floor);
     building = document.getElementById("elevators");
     elevatorId = "elevator" + elevator.toString();
-    console.log(building.rows.length);
-    for(var row = 0; row < building.rows.length-2; row++){
+    floor = 19 - floor;
+    console.log("FLOOR: " + floor);
+    for(var row = 0; row != floor; row++){
       console.log("AWAKEN")
       for(var col = 0; col < 5; col++) {
         if(building.rows[row].cells[col].id == elevatorId) {
@@ -101,7 +104,7 @@ async function createLevels() {
         closest_elevator = key;
       }
     }
-    console.log(closest_elevator)
+    console.log(closest_elevator + " " + hashmap.get(closest_elevator));
     if(floor < hashmap.get(closest_elevator)) {
       console.log("DOWN")
       moveDown(closest_elevator, floor);
