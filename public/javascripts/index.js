@@ -24,11 +24,13 @@ async function createLevels() {
   async function moveUp(elevator, floor) {
       hashmap.set(elevator, floor);
       console.log("moving to floor: " + floor.toString());
-      floor = 21 - floor;
+      floor = 19 - floor;
       building = document.getElementById("elevators");
       elevatorId = "elevator" + elevator.toString();
-      for(var row = building.rows.length - 1; row >= floor; row--) {
-          //console.log("HERE")
+      console.log("FLOOR: " + floor);
+      console.log("LENGTH OF TABLE " + building.rows.length);
+      for(var row = building.rows.length - 1; row != floor && row > 0; row--) {
+          console.log("HERE")
           for(var col = 0; col < 5; col++){
               if(building.rows[row].cells[col].id == elevatorId) {
                 console.log("HERE")
@@ -47,7 +49,7 @@ async function createLevels() {
     elevatorId = "elevator" + elevator.toString();
     floor = 19 - floor;
     console.log("FLOOR: " + floor);
-    for(var row = 0; row != floor; row++){
+    for(var row = 0; row < floor  && row <= building.rows.length; row++){
       console.log("AWAKEN")
       for(var col = 0; col < 5; col++) {
         if(building.rows[row].cells[col].id == elevatorId) {
@@ -105,7 +107,7 @@ async function createLevels() {
       }
     }
     console.log(closest_elevator + " " + hashmap.get(closest_elevator));
-    if(floor < hashmap.get(closest_elevator)) {
+    if(floor <= hashmap.get(closest_elevator)) {
       console.log("DOWN")
       moveDown(closest_elevator, floor);
     }else {
